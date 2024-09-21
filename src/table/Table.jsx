@@ -9,10 +9,8 @@ import {
 } from "@tanstack/react-table";
 import { numberTypes, rowData } from "./rowData";
 import { useComputed } from "@preact/signals-react";
-import { useSignals } from "@preact/signals-react/runtime";
 
 const RowTotalCell = ({ row: { original, index } }) => {
-  useSignals();
   const rowTotal = useComputed(() => {
     const { age, visits, progress } = original;
     return age.value + visits.value + progress.value;
@@ -31,7 +29,6 @@ const DefaultCell = ({
     columnDef: { accessorKey },
   },
 }) => {
-  useSignals();
   const valSignal = getValue();
 
   console.log(id, "rendered", index, "rowIndex");
